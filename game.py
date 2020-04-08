@@ -1,21 +1,25 @@
 import pygame
 import math
+import sys
 import pygame.mixer
 import numpy as np
 import time
 import seaborn as sns
 import webcolors
 from grid_world import Grid, Tile
+import argparse
 
 # Constants
-x_grid = 6
-y_grid = 6
-LIVES = 4
+X_GRID = 4
+Y_GRID = 4
+LIVES = 1
+
+pygame.init()
 
 # the WIDTH and HEIGHT of each grid
 # This sets the margin between each cell
-PIXELS_PER_TILE = 160
-MARGIN = 10
+screen = pygame.display.set_mode()
+screen_w, screen_h = pygame.display.get_surface().get_size()
 
 # Define some colors
 color_platte = sns.color_palette(["#9b59b6", "#3498db", "#95a5a6", "#e74c3c", "#34495e", "#2ecc71"])
@@ -23,23 +27,16 @@ BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
 RED = (255, 0, 0)
+LIVES
 PURPLE = webcolors.hex_to_rgb("#9b59b6")
 
-
-SIZE = [(PIXELS_PER_TILE+MARGIN)*x_grid + MARGIN, (PIXELS_PER_TILE+MARGIN)*y_grid+MARGIN]
-print(f"Grid Size: {x_grid}x{y_grid}: ({SIZE[0]}, {SIZE[1]})px")
-
-pygame.init()
-
-screen = pygame.display.set_mode(SIZE)
-# screen = pygame.display.set_mode(SIZE, pygame.HWSURFACE | pygame.DOUBLEBUF | pygame.RESIZABLE| pygame.FULLSCREEN)
 pygame.display.set_caption('Krabby Patty Hunter')
 clock = pygame.time.Clock()
 
-setattr(Tile, 'PIXELS_PER_TILE', PIXELS_PER_TILE)
-setattr(Tile, 'MARGIN', MARGIN)
-
 grid = None
+heart = None
+pixels_per_tile = None
+margin = None
 # print("Right Path: ", grid.path)
 # print(grid.player,grid.player.screen_coords())
 # print(grid.burger, grid.burger.screen_coords())
@@ -48,14 +45,29 @@ grid = None
 #         print(tile)
 # print(grid.actions)
 
-heart = pygame.image.load(Tile.ASSETS['heart'])
-heart = pygame.transform.scale(heart,(int(PIXELS_PER_TILE/2),int(PIXELS_PER_TILE/2)))
+    
 
 def initialize_round():
-    global grid
-    grid = Grid(x_grid, y_grid, lives=LIVES)
-    print("Right Path: ", grid.path)
-    # print(grid.score_max)
+    global grid, screen, heart, pixels_per_tile, margin
+
+    pixels_per_tile = int(min(screen_h/Y_GRID,screen_w/X_GRID) * 3 / 4)
+    margin = int(pixels_per_tile/20)
+
+    size = [(pixels_per_tile+margin)*X_GRID + margin, (pixels_per_tile+margin)*Y_GRID+margin]
+    print(f"Grid Size: {X_GRID}x{Y_GRID}: ({size[0]}, {size[1]})px")
+
+
+    setattr(Tile, 'PIXELS_PER_TILE', pixels_per_tile)
+    setattr(Tile, 'MARGIN', margin)
+
+    # screen = pygame.display.set_mode(SIZE, pygame.HWSURFACE | pygame.DOUBLEBUF | pygame.RESIZABLE| pygame.FULLSCREEN)
+    screen = pygame.display.set_mode(size)
+
+    grid = Grid(X_GRID,Y_GRID,LIVES)
+    # print("Right Path: ", grid.path)
+
+    heart = pygame.image.load(Tile.ASSETS['heart'])
+    heart = pygame.transform.scale(heart,(int(pixels_per_tile/2),int(pixels_per_tile/2)))
 
 
 def game_loop():
@@ -97,7 +109,7 @@ def draw_loop():
 
     draw(grid.player)
     for i in range(grid.lives):
-        screen.blit(heart,(MARGIN + i*(heart.get_width())+MARGIN*i%2,MARGIN))
+        screen.blit(heart,(margin + i*(heart.get_width())+margin*i%2,margin))
 
     pygame.display.update()
     clock.tick(60)
@@ -129,12 +141,22 @@ def preprocess_image(asset, bx, by):
 
 
 def draw(tile):
-    screen.blit(preprocess_image(tile.image, PIXELS_PER_TILE,
-                                 PIXELS_PER_TILE), tile.screen_coords())
+    screen.blit(preprocess_image(tile.image, pixels_per_tile,
+                                 pixels_per_tile), tile.screen_coords())
 
+
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--x', type=int,default=X_GRID, help='The width of the grid')
+parser.add_argument('--y', type=int,default=Y_GRID, help='The height of the grid')
+parser.add_argument('--l', type=int,default=LIVES, help='The amount of lives')
+
+args = parser.parse_args()
+# sys.stdout.write(str(args))
 
 game_over = False
 while not game_over:
+    X_GRID,Y_GRID,LIVES = args.x, args.y, args.l
     initialize_round()
     while not grid.done and not game_over:
         game_loop()
@@ -144,3 +166,5 @@ while not game_over:
 else:
     pygame.quit()
     quit()
+
+

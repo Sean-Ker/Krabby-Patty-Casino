@@ -71,7 +71,7 @@ def get_random_path(x_grid, y_grid, binary = True):
     write = False
     all_paths = None
 
-    with open('all_paths.pkl', 'rb') as file:
+    with open('data\\all_paths.pkl', 'rb') as file:
         all_paths = pickle.load(file)
 
     if all_paths.get((x_grid, y_grid)) == None:
