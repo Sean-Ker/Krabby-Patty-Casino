@@ -15,9 +15,9 @@ from grid_world import Grid, Tile
 from matplotlib import pyplot as plt
 
 # Constants
-X_GRID = 4              # Width of the grid
-Y_GRID = 14              # Height of the grid
-LIVES = 1               # How many lives
+X_GRID = 6              # Width of the grid
+Y_GRID = 4              # Height of the grid
+LIVES = 3               # How many lives
 SHOW_LIVE = True        # Should update the graph live?
 
 # init

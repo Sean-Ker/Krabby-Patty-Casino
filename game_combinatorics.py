@@ -66,7 +66,7 @@ def demo2(x_grid, y_grid):
     for i in set(ttl_seq):
         print(f"{i}: {round(ttl_seq.count(i)*100/len(ttl_seq),2)}%")
 
-
+# Returns a random path
 def get_random_path(x_grid, y_grid, binary = True):
     write = False
     all_paths = None
@@ -117,6 +117,7 @@ def get_random_path(x_grid, y_grid, binary = True):
 
 # Initialize and reset dictionary
 
+# Reads the current dictionary form file 
 def initialize_dict():
     with open('all_paths.pkl', 'wb') as file:
         pickle.dump({(2, 2): (('up', 'right'), ('right', 'up'))}, file)
