@@ -19,14 +19,14 @@ The structure of the project consists of 4 important files:
 4. ```simulator.py```: A simulator that reassures the mathematics from the report.
 
 ## Usage on Windows
-1. Please make sure that [```python 3.X```](https://www.python.org/downloads/) and [```pip```](www.liquidweb.com/kb/install-pip-windows/) are installed.
+1. Please make sure that [```python<=3.7```](https://www.python.org/downloads/) and [```pip```](www.liquidweb.com/kb/install-pip-windows/) are installed.
 2. Download or clone this repository.
 3. Open a command line (<Win+R> and write ```cmd.exe```) and write ```cd path_to_the_folder```. Press < Enter>.
-4. run ```pip install -r requirements.txt```
-5. run ```python game.py -h``` for further instructions. For example: ```python game.py --x 5 --y 5 --l 2``` or ```python game.py --x 4 --y 3 --l 1```.
+4. Run ```pip install -r requirements.txt```
+5. Run ```python game.py -h``` for further instructions. For example: ```python game.py --x 5 --y 5 --l 2``` or ```python game.py --x 4 --y 3 --l 1```.
 6. To execute and a live graph, you will need to open the ```simulator.py``` file and edit the constants as you wish. 
 
-YouTube video instructions coming up.
+[YouTube Video](https://youtu.be/hHs_8JJvYEs)
 
 ## Please Note
 
