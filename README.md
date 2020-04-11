@@ -8,7 +8,7 @@ date: Friday, April 10th, 2020
 Supervisor: Ms. Martin \
 Couse: Data management (MDM4U-01) \
 Date: Friday, April 10th, 2020 \
-Authorss:  Sean Kernitsman and Joshua Levine 
+Authors:  Sean Kernitsman and **Joshua Levine** 
 
 ## Structure
 
