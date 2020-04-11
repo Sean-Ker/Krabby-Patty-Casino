@@ -35,5 +35,5 @@ YouTube video instructions coming up.
 
 ## Screenshots
 ![Game Screenshot](/assets/game_screenshot.png?raw=true "Game Screenshot")
-![Sample Simulation(1)](assets/5_5_2_50its.png)
-![Sample Simulation(2)](assets/5_5_2_50000its.png)
+![Sample Simulation(1)](assets/5_5_2_50its.png?raw=true)
+![Sample Simulation(2)](assets/5_5_2_50000its.png?raw=true)
