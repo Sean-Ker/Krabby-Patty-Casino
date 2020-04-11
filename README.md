@@ -12,7 +12,7 @@ Authors:  Sean Kernitsman, Joshua Levine \
 
 ## Structure
 
-The stracture of the project consists of 4 important files: \
+The structure of the project consists of 4 important files: \
 1. ```game_combinatorics.py```- a utility file full of useful statistical functions.
 2. ```grid_world.py```: The object oriented programming behind the program.
 3. ```game.py```: The main game to run. See instructions below.
@@ -28,4 +28,5 @@ The stracture of the project consists of 4 important files: \
 
 ## Note
 
+* [The background music is royalty free.](https://freemusicarchive.org/music/BoxCat_Games)
 * If you are using a vertical monitor, please make sure that it is not the main monitor.

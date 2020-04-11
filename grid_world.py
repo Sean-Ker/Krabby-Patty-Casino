@@ -2,7 +2,8 @@ from game_combinatorics import get_random_path
 import numpy as np
 import pygame  # Just to load images
 
-
+# The backend class of the program! 
+# Warning: Not documented.
 class Grid:
     # (i,j)  i ->  +
     #     j  #  #  #
